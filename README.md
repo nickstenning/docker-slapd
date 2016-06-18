@@ -25,6 +25,7 @@ with data stored in `/data/ldap` on the host, use the following:
                -e LDAP_DOMAIN=mycorp.com \
                -e LDAP_ORGANISATION="My Mega Corporation" \
                -e LDAP_ROOTPASS=s3cr3tpassw0rd \
+               --publish-all \
                -d nickstenning/slapd
 
 You can find out which port the LDAP server is bound to on the host by running
