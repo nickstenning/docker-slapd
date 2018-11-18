@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.8
+FROM phusion/baseimage:0.11
 MAINTAINER Nick Stenning <nick@whiteink.com>
 
 ENV HOME /root
@@ -10,7 +10,6 @@ RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 # Configure apt
-RUN echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise universe' >> /etc/apt/sources.list
 RUN apt-get -y update
 
 # Install slapd

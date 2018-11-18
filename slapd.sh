@@ -30,7 +30,7 @@ slapd slapd/no_configuration boolean false
 slapd slapd/dump_database select when needed
 EOF
 
-  dpkg-reconfigure -f noninteractive slapd
+  DEBIAN_FRONTEND=noninteractive dpkg-reconfigure slapd
 
   touch /var/lib/ldap/docker_bootstrapped
 else
