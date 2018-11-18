@@ -18,6 +18,10 @@ to `docker run`:
 - `LDAP_ROOTPASS` sets the LDAP admin user password (i.e. the password for
   `cn=admin,dc=example,dc=com` if your domain was `example.com`)
 
+Optionally, you can configure the following options:
+
+- `SLAPD_NOFILE_SOFT` sets the open file softlimit to be (defaults to the system   limit or 16,384, whichever is smaller)
+
 For example, to start a container running slapd for the `mycorp.com` domain,
 with data stored in `/data/ldap` on the host, use the following:
 

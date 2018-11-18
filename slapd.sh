@@ -35,6 +35,12 @@ else
   status "found already-configured slapd"
 fi
 
+# Adjust the soft nofile limit downwards to restrict slapd's memory usage.
+ULIMIT_NOFILE_SYS=$(ulimit -Sn)
+ULIMIT_NOFILE_SET=${SLAPD_NOFILE_SOFT:-16384}
+ULIMIT_NOFILE=$(( $ULIMIT_NOFILE_SYS < $ULIMIT_NOFILE_SET ? $ULIMIT_NOFILE_SYS : $ULIMIT_NOFILE_SET ))
+
 status "starting slapd"
 set -x
+ulimit -Sn "$ULIMIT_NOFILE"
 exec /usr/sbin/slapd -h "ldap:///" -u openldap -g openldap -d 0
