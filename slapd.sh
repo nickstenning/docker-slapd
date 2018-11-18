@@ -6,7 +6,7 @@ status () {
   echo "---> ${@}" >&2
 }
 
-set -x
+set +x
 : LDAP_ROOTPASS=${LDAP_ROOTPASS}
 : LDAP_DOMAIN=${LDAP_DOMAIN}
 : LDAP_ORGANISATION=${LDAP_ORGANISATION}
