@@ -23,9 +23,11 @@ Optionally, you can configure the following options:
 - `SLAPD_NOFILE_SOFT` sets the open file softlimit to be (defaults to the system   limit or 16,384, whichever is smaller)
 
 For example, to start a container running slapd for the `mycorp.com` domain,
-with data stored in `/data/ldap` on the host, use the following:
+with data stored in `/data/ldap` and config in `/data/ldapconfig` on the host,
+use the following:
 
     docker run -v /data/ldap:/var/lib/ldap \
+               -v /data/ldapconfig:/etc/ldap/slapd.d \
                -e LDAP_DOMAIN=mycorp.com \
                -e LDAP_ORGANISATION="My Mega Corporation" \
                -e LDAP_ROOTPASS=s3cr3tpassw0rd \

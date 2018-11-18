@@ -25,7 +25,9 @@ EXPOSE 389
 RUN mkdir /etc/service/slapd
 ADD slapd.sh /etc/service/slapd/run
 
-# To store the data outside the container, mount /var/lib/ldap as a data volume
+# To store config outside the container, mount /etc/ldap/slapd.d as a data volume.
+# To store data outside the container, mount /var/lib/ldap as a data volume.
+VOLUME /etc/ldap/slapd.d /var/lib/ldap
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
